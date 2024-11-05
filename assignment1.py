@@ -22,3 +22,12 @@ def usage():
 def leap_year(year):
     """This shows whether the given year is leap year or no"""
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+def mon_max(month, year):
+    """ This gives the max number of days in the given month and year"""
+    if month in [4, 6, 9, 11]:
+        return 30
+    elif month == 2:
+        return 29 if leap_year(year) else 28
+    else:
+        return 31
