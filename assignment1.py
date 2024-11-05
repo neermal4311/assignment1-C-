@@ -31,3 +31,15 @@ def mon_max(month, year):
         return 29 if leap_year(year) else 28
     else:
         return 31
+
+
+
+def valid_date(date):
+    """Check if the given date is valid"""
+    try:
+        day, month, year = map(int, date.split('/'))
+        if year < 1 or month < 1 or month > 12 or day < 1:
+            return False
+        return day <= mon_max(month, year)
+    except ValueError:
+        return False
