@@ -80,3 +80,30 @@ def before(date):
             year -= 1
         day = mon_max(month, year)
     return f"{day:02d}/{month:02d}/{year:04d}"
+
+
+
+
+def day_iter(start_date, num_days):
+    """Return the end date after iterating through the given number of days"""
+    date = start_date
+    for _ in range(abs(num_days)):
+        date = after(date) if num_days > 0 else before(date)
+    return date
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        usage()
+    
+    start_date = sys.argv[1]
+    try:
+        num_days = int(sys.argv[2])
+    except ValueError:
+        usage()
+    
+    if not valid_date(start_date):
+        usage()
+    
+    end_date = day_iter(start_date, num_days)
+    day = day_of_week(end_date)
+    
+    print(f"The end date is {day}, {end_date}.")
