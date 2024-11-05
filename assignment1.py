@@ -18,3 +18,7 @@ def usage():
     """this Display usage message and exit"""
     print("Usage: assignment1.py YYYY-MM-DD NN")
     sys.exit(1)
+
+def leap_year(year):
+    """This shows whether the given year is leap year or no"""
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
